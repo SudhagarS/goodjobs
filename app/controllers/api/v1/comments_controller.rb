@@ -4,7 +4,7 @@ class Api::V1::CommentsController < Api::V1::BaseApiController
   end
 
   def index
-    render json: Job.find(job_id).comments
+    render json: Job.find(job_id).comments.order(created_at: :asc)
   end
 
   def create

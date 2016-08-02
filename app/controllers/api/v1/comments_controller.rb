@@ -19,7 +19,6 @@ class Api::V1::CommentsController < Api::V1::BaseApiController
   end
 
   def destroy
-    raise Exception('ola')
     Comment.find(comment_id).destroy
     render json: {ok: true}
   end

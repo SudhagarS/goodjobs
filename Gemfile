@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.2.1'
-gem 'mysql2', '~> 0.3.20'
+gem 'mysql2', '~> 0.3.18'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'rails_12factor', group: :production #rails library tuned to run smoothly on Heroku/Dokku cloud infrastructures

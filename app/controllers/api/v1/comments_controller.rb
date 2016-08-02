@@ -13,13 +13,13 @@ class Api::V1::CommentsController < Api::V1::BaseApiController
   end
 
   def update
-    raise Exception('ola')
     comment = Comment.find comment_id
     comment.update_attributes!(comment_update_params)
     render json: comment
   end
 
   def destroy
+    raise Exception('ola')
     Comment.find(comment_id).destroy
     render json: {ok: true}
   end

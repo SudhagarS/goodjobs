@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160802062833) do
+ActiveRecord::Schema.define(version: 20160808113827) do
 
   create_table "applications", force: :cascade do |t|
     t.string   "user",         limit: 255, null: false
@@ -35,14 +35,16 @@ ActiveRecord::Schema.define(version: 20160802062833) do
   add_index "comments", ["job_id"], name: "index_comments_on_job_id", using: :btree
 
   create_table "jobs", force: :cascade do |t|
-    t.string   "company_name",      limit: 255,   null: false
-    t.string   "company_home_page", limit: 255
-    t.string   "title",             limit: 255,   null: false
-    t.string   "location",          limit: 255,   null: false
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
-    t.text     "description",       limit: 65535
-    t.text     "tags",              limit: 65535
+    t.string   "company_name",       limit: 255,   null: false
+    t.string   "company_home_page",  limit: 255
+    t.string   "title",              limit: 255,   null: false
+    t.string   "location",           limit: 255,   null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.text     "description",        limit: 65535
+    t.text     "tags",               limit: 65535
+    t.integer  "applications_count", limit: 4
+    t.integer  "comments_count",     limit: 4
   end
 
   create_table "replies", force: :cascade do |t|

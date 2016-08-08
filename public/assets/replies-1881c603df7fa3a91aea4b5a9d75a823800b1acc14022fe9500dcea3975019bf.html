@@ -1,0 +1,41 @@
+<div class="replies-container">
+  <div class="reply-container" ng-repeat="reply in comment.replies">
+    <div ng-hide="reply.editing" class="reply">
+      <span class="user-name">{{reply.user}}</span> · <span time-ago date="{{reply.created_at}}"></span>
+      <div class="reply-text">
+        <pre>{{reply.text}}</pre>
+      </div>
+      <div class="reply-actions">
+        <a href="" ng-click="reply.editing=true">Edit</a>
+        <a href="" ng-click="reply.flags.showDeleteConfirm=true">Delete</a>
+        <span ng-if="reply.flags.showDeleteConfirm">
+        Sure? (<a href="" ng-click="reply.flags.showDeleteConfirm=false; reply.errors.errorOnDelete = false;">No</a>/<a href="" ng-click="cmtsCtrl.deleteReply(comment, $index)" >Yes</a>)
+        </span>
+        <span class="text-danger" ng-if="reply.errors.errorOnDelete">There was a problem while deleting. Try again later.</span>
+      </div>
+    </div>
+    <div ng-show="reply.editing" class="reply-edit-container">
+      <div class="reply-header">
+        <span class="user-name">{{reply.user}}</span>
+      </div>
+      <form class="form">
+        <div class="form-group">
+          <textarea ng-model="reply.text" class="form-control"></textarea>
+        </div>
+        <button ng-click="cmtsCtrl.editReply(comment, $index)" class="btn btn-success">Done</button>
+        <span class="text-danger" ng-if="reply.errors.errorOnUpdate">There was a problem while updating. Try again later.</span>
+      </form>
+    </div>
+  </div>
+  <div ng-if="comment.flags.repling" class="margin-top-10 reply-new">
+    <form class="form">
+      <div class="form-group">
+        <label>Reply to comment</label>
+        <textarea ng-model="comment.replyText" class="form-control" rows="2"></textarea>
+      </div>
+      <button type="submit" ng-click="cmtsCtrl.addReply(comment)" class="btn btn-primary">Submit</button>
+      <span ng-if="cmtsCtrl.flags.replySubmitting">submitting...</span>
+      <span class="text-danger" ng-if="comment.errors.errorOnReplySubmit">There was a problem while submitting. Try again later.</span>
+    </form>
+  </div>
+</div>

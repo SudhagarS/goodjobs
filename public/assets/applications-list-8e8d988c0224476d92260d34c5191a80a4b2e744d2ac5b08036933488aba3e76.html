@@ -1,0 +1,41 @@
+<div class="applications-list-header">
+  <a href="" onclick="window.history.back();">Back</a>
+</div>
+<div class="applications-list-container">
+  <div>
+    <h3>All applications for {{applsList.job.title}} at {{applsList.job.company_name}}</h3>
+  </div>
+  <div ng-if="applsList.applications.length === 0 && applsList.flags.loading === false" class="margin-top-20">
+    <p>No applications</p>
+  </div>
+  <div ng-if="applsList.applications.length">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Cover Letter</th>
+          <th>Resume</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="appl in applsList.applications">
+          <th scope="row">{{$index + 1}}</th>
+          <td>{{appl.user}}</td>
+          <td>{{appl.cover_letter}}</td>
+          <td><a href="{{appUrl + appl.resume.url}}" target="_blank">resume</a></td>
+          <td time-ago date="{{appl.created_at}}"></span>
+        </tr>
+      </tbody>
+    </table>
+    {{appl.user}}
+  </div>
+  <br>
+  <div ng-if="applsList.loading" style="margin-top: 20px">
+    <p>Loading...</p>
+  </div>
+  <div>
+    <a href="" ng-click="applsList.loadMore()" ng-if="applsList.moreAvailable && !applsList.flags.loading">show more applications...</a>
+  </div>
+</div>

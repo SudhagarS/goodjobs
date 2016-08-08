@@ -1,0 +1,36 @@
+<div>
+  <form ng-submit="jobForm.submitJobForm()" >
+    <div class="form-group">
+      <label>Job Title</label>
+      <input type="text" ng-model="jobForm.job.title" class="form-control" required>
+      <small id="emailHelp" class="form-text text-muted">eg. 'Software Engineer', 'Content Writer'</small>
+    </div>
+    <div class="form-group">
+      <label>Your Company</label>
+      <input type="text" ng-model="jobForm.job.company_name" class="form-control" required>
+      <small class="form-text text-muted">eg. 'F22', 'Google'</small>
+    </div>
+    <div class="form-group">
+      <label>Your Company Home Page</label>
+      <input type="url" ng-model="jobForm.job.company_home_page" class="form-control">
+      <small class="form-text text-muted">eg. 'www.f22.com'</small>
+    </div>
+    <div class="form-group">
+      <label>Job Description</label>
+      <textarea ng-model="jobForm.job.description" class="form-control" rows="4"></textarea>
+      <small class="form-text text-muted">description in markdown format</small>
+    </div>
+    <div class="form-group">
+      <label>Job Location</label>
+      <input type="text" ng-model="jobForm.job.location" class="form-control" required>
+      <small class="form-text text-muted">eg. 'Chennai'</small>
+    </div>
+    <div class="form-group">
+      <label>Tags</label>
+      <tags-input ng-model="jobForm.job.tags" ></tags-input>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <span ng-if="jobForm.flags.submitting">submitting...</span>
+    <span class="text-danger" ng-if="jobForm.errors.errorOnSubmit">There was an error while submitting. Try again.</span>
+  </form>
+</div>

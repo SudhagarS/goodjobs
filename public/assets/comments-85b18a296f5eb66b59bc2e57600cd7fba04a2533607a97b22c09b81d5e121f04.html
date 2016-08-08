@@ -1,0 +1,44 @@
+<div class="comments-container margin-top-10" ng-controller="CommentsCtrl as cmtsCtrl">
+  <h4>Comments</h4>
+  <div class="comment-container" ng-repeat="comment in cmtsCtrl.comments">
+    <div ng-hide="comment.flags.editing" class="comment">
+      <span class="user-name">{{comment.user}}</span> · <span time-ago date="{{comment.created_at}}"></span>
+      <div class="comment-text">
+        <pre>{{comment.text}}</pre>
+      </div>
+      <div class="comment-actions">
+        <a href="" ng-click="comment.flags.repling=!comment.flags.repling">Reply</a>
+        <a href="" ng-click="comment.flags.editing=true">Edit</a>
+        <a href="" ng-click="comment.flags.showDeleteConfirm=true" >Delete</a>
+        <span ng-if="comment.flags.showDeleteConfirm">
+          Sure? 
+          (<a href="" ng-click="comment.flags.showDeleteConfirm=false; comment.errors.errorOnDelete = false;">No</a>/<a href="" ng-click="cmtsCtrl.deleteComment(comment)" >Yes</a>)
+        </span>
+        <span class="text-danger" ng-if="comment.errors.errorOnDelete">There was a problem while updating. Try again later.</span>
+      </div>
+    </div>
+    <div ng-show="comment.flags.editing" class="comment-edit-container">
+      <div class="comment-header"><span class="user-name">{{comment.user}}</span></div>
+      <form class="form" ng-submit="">
+        <div class="form-group">
+          <textarea ng-model="comment.text" class="form-control" rows="2" cols="40"></textarea>
+        </div>
+        <button ng-click="cmtsCtrl.editComment(comment)" class="btn btn-success">Done</button>
+        <span class="text-danger" ng-if="comment.errors.errorOnUpdate">There was a problem while updating. Try again later.</span>
+      </form>
+    </div>
+    <div ng-include="'replies.html'"></div>
+  </div>
+
+  <div class="comment-new">
+    <form class="form" ng-submit="cmtsCtrl.addComment()">
+      <div class="form-group">
+        <label>Add a comment:</label>
+        <textarea ng-model="cmtsCtrl.commentForm.text" class="form-control" rows="2" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+      <span ng-if="cmtsCtrl.flags.commentSubmitting">submitting...</span>
+      <span class="text-danger" ng-if="cmtsCtrl.errors.errorOnNewCommentSubmit">There was a problem while submitting. Try again later.</span>
+    </form>
+  </div>
+</div>

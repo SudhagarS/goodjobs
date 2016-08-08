@@ -65,4 +65,10 @@ angular.module('goodjobsApp')
         return Job.get({id: id_}).$promise;
       }
     };
+
+    self.incrApplicationsCount = function(job_id) {
+      var job = _.find(jobs, {id: job_id});
+      job.applications_count += 1;
+    };
+
   }]);

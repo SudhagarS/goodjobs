@@ -27,6 +27,7 @@ angular.module('goodjobsApp')
         self.flags.applicationSubmitting = false;
         self.flags.submissionSuccess = true;
         self.clearApplicationForm();
+        jobStore.incrApplicationsCount(self.job.id);
       });
     };
 

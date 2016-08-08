@@ -11,5 +11,156 @@
  * file per style scope.
  *
  *= require_tree .
+ *= require bootstrap/dist/css/bootstrap
+ *= require ng-tags-input/ng-tags-input
  *= require_self
  */
+
+body {
+  padding: 0px 0px 20px;
+  font-family: 'Avenir Next', sans-serif;
+  color: #666;
+}
+
+pre {
+  white-space: pre-wrap;
+  word-break: normal;
+  background: transparent;
+  border: 0px;
+  padding: 0px;
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+}
+
+.nav > li > a {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.table-borderless td, .table-borderless th {
+  border-top: none !important; 
+}
+
+.table-borderbottom td, .table-borderbottom th {
+  border-top: none !important;  
+  border-bottom: 1px solid #eee;
+}
+
+.table-vertical-align-middle td {
+  vertical-align: middle !important; 
+}
+
+/* Make the masthead heading the same height as the navigation */
+.header h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 40px;
+  padding-bottom: 19px;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+.margin-top-10 {
+  margin-top: 10px;
+}
+
+.margin-top-20 {
+  margin-top: 20px;
+}
+
+.margin-bottom-10 {
+  margin-bottom: 10px;
+}
+
+.tag {
+  background: #42A5F5;
+  color: #fafafa;
+  border-radius: 5px;
+  padding: 7px;
+  margin-right: 5px;
+}
+
+.job-row {
+  cursor: pointer;
+  padding: 10px 0px;
+}
+
+.job-row:hover {
+  background: #fafafa;
+}
+
+.job-row .title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+}
+
+.job-row .company {
+  font-size: 17px;
+  color: #777;
+}
+
+.comment-container, .reply-container {
+  border-top: 1px solid #eee;
+  padding: 10px 0px;
+}
+
+.comment > .user-name, .reply > .user-name {
+  color: #3F86B0;
+  font-size: 16px;
+}
+
+.comment > span, .reply > span {
+}
+
+.comment-text, .reply-text {
+}
+
+.comment-actions, .reply-actions {
+  font-size: 12px;
+}
+
+.replies-container {
+  margin: 10px 0px 0px 30px;
+}
+
+.job-container > .apply-section {
+  margin: 20px 0px;
+}
+
+.applications-list-container {
+  margin-top: 20px;
+}
+
+.job-details > .title {
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+}
+
+.job-details > .name-and-location {
+  font-size: 16px;
+}
+
+.job-details a {
+  color: #444;
+  text-decoration: underline;
+}
+
+.job-details > .description {
+  font-size: 16px;
+}
+
+.job-details .a-tag{
+  text-decoration: none;
+  color:#fff;
+}
+
+.back-link {
+  margin: 5px 0px 10px;
+}

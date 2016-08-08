@@ -4,8 +4,6 @@ ruby '2.2.3'
 
 gem 'rails', '4.2.6'
 gem 'mysql2', '0.3.18'
-gem 'jquery-rails'
-gem 'turbolinks'
 gem 'rails_12factor', group: :production #rails library tuned to run smoothly on Heroku/Dokku cloud infrastructures
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
@@ -24,6 +22,8 @@ group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem 'spring'
+
+  gem 'angular-rails-templates'
 end
 
 group :production do

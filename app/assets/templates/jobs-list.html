@@ -1,0 +1,43 @@
+<div class="jobs-list-container">
+  <div ng-show="jobsList.flags.loadError">
+    Could not load jobs. Please try again later.
+  </div>
+  <div ng-hide="jobsList.flags.loadError">
+    <div>
+      <form class="form-inline">
+        <div class="form-group">
+          <input ng-model="jobsList.query" size="80" class="form-control" id="search-query" placeholder="Search"/>
+        </div>
+        <button ng-click="jobsList.search(jobsList.query)" class="btn btn-default btn-success">Search</button>
+        <button ng-click="jobsList.clearSearch()" class="btn btn-default">Clear</button>
+      </form>
+      <small class="form-text text-muted">eg. 'Python Chennai', 'Content Writer', 'Mumbai'</small>
+    </div>
+    <div ng-if="jobsList.jobs.length === 0 && jobsList.flags.loading === false" style="margin-top: 20px">
+      <p>No Jobs found.</p>
+    </div>
+
+    <table class="table table-borderbottom table-vertical-align-middle margin-top-10">
+      <tbody>
+        <tr class="job-row" ng-repeat="job in jobsList.jobs" ng-click="jobsList.viewJob(job.id)">
+          <td>
+            <div class="title">{{job.title}}</div>
+            <div class="company">{{job.company_name}}</div>
+          </td>
+          <td>
+            <span class="tag" ng-repeat="tag in job.tags | limitTo: 2" ng-click="jobsList.searchByTag(tag, $event)">
+              {{tag}}
+            </span>
+          </td>
+          <td time-ago date="{{job.created_at}}"></span>
+        </tr>
+      </tbody>
+    </table>
+    <div ng-if="jobsList.flags.loading" style="margin-top: 20px">
+      <p>Loading...</p>
+    </div>
+    <div>
+      <a href="" ng-click="jobsList.loadMore()" ng-if="jobsList.flags.moreAvailable && !jobsList.flags.loading">load more...</a>
+    </div>
+  </div>
+</div>

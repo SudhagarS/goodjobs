@@ -1,0 +1,34 @@
+<div class="back-link">
+  <a href="" ng-click="jobPerma.goBackToJobsView()">Back</a>
+</div>
+<div>
+  <div class="job-container">
+    <div class="job-details">
+      <div class="title">{{jobPerma.job.title}}</div>
+      <div class="name-and-location margin-top-10">
+        <a class="name" ng-if="jobPerma.job.company_home_page" href="{{jobPerma.job.company_home_page}}">{{jobPerma.job.company_name}}</a>
+        <span ng-if="!jobPerma.job.company_home_page">{{jobPerma.job.company_name}}</span>
+        <img src="<%= asset_path( 'icon-location.png' ) %>"/>{{jobPerma.job.location}}
+      </div>
+      <div class="description margin-top-10" btf-markdown="jobPerma.job.description"></div>
+      <div class="tags margin-top-20">
+        <span class="tag" ng-repeat="tag in jobPerma.job.tags">
+          <a class="a-tag" href="/#/jobs?q=tags:{{tag}}">{{tag}}</a>
+        </span>
+      </div>
+    </div>
+
+    <div class="apply-section" ng-include="'job-apply-form.html'"></div>
+
+    <div class="job-actions">
+      <a href="/#/jobs/{{jobPerma.job.id}}/applications" >Applications</a>
+      <a href="" ng-click="jobPerma.editJob()" >Edit</a>
+      <a href="" ng-click="jobPerma.flags.showDeleteConfirm=true" >Delete</a>
+      <span ng-if="jobPerma.flags.showDeleteConfirm">
+        Sure? (<a href="" ng-click="jobPerma.flags.showDeleteConfirm=false">No</a>/<a href="" ng-click="jobPerma.deleteJob()" >Yes</a>)
+    </span>
+    </div>
+  </div>
+  <br/>
+  <div ng-include="'comments.html'"></div>
+</div>
